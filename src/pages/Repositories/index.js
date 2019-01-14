@@ -19,6 +19,10 @@ export default class Repositories extends Component {
     error: false,
   };
 
+  static navigationOptions = {
+    header: null,
+  };
+
   componentDidMount() {
     this.loadData();
     // AsyncStorage.clear();
@@ -37,11 +41,10 @@ export default class Repositories extends Component {
           ...data,
           {
             id: response.data.id,
-            name: response.data.name,
-            organization: {
-              name: response.data.organization.login,
-              avatar: response.data.organization.avatar_url,
-            },
+            url: inputText,
+            image: response.data.organization.avatar_url,
+            title: response.data.name,
+            subtitle: response.data.organization.login,
           },
         ],
         inputText: '',
